@@ -1,0 +1,76 @@
+{
+    "version": "1.0.0",
+    "queries": [
+        {
+            "Query": {
+                "Commands": [
+                    {
+                        "SemanticQueryDataShapeCommand": {
+                            "Query": {
+                                "Version": 2,
+                                "From": [
+                                    {
+                                        "Name": "m1",
+                                        "Entity": "MP_PUBLIC",
+                                        "Type": 0
+                                    }
+                                ],
+                                "Select": [
+                                    {
+                                        "Column": {
+                                            "Expression": {
+                                                "SourceRef": {
+                                                    "Source": "m1"
+                                                }
+                                            },
+                                            "Property": "DATE"
+                                        },
+                                        "Name": "MP_PUBLIC.DATE"
+                                    },
+                                    {
+                                        "Aggregation": {
+                                            "Expression": {
+                                                "Column": {
+                                                    "Expression": {
+                                                        "SourceRef": {
+                                                            "Source": "m1"
+                                                        }
+                                                    },
+                                                    "Property": "N"
+                                                }
+                                            },
+                                            "Function": 0
+                                        },
+                                        "Name": "Sum(MP_PUBLIC.N)"
+                                    }
+                                ]
+                            },
+                            "Binding": {
+                                "Primary": {
+                                    "Groupings": [
+                                        {
+                                            "Projections": [
+                                                0,
+                                                1
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "DataReduction": {
+                                    "DataVolume": 4,
+                                    "Primary": {
+                                        "Sample": {}
+                                    }
+                                },
+                                "Version": 1
+                            }
+                        }
+                    }
+                ]
+            },
+            "QueryId": ""
+        }
+    ],
+    "cancelQueries": [],
+    "modelId": 116518
+}

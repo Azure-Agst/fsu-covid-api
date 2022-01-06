@@ -1,0 +1,116 @@
+{
+    "version": "1.0.0",
+    "queries": [
+        {
+            "Query": {
+                "Commands": [
+                    {
+                        "SemanticQueryDataShapeCommand": {
+                            "Query": {
+                                "Version": 2,
+                                "From": [
+                                    {
+                                        "Name": "c",
+                                        "Entity": "CURRENT_Public",
+                                        "Type": 0
+                                    }
+                                ],
+                                "Select": [
+                                    {
+                                        "Column": {
+                                            "Expression": {
+                                                "SourceRef": {
+                                                    "Source": "c"
+                                                }
+                                            },
+                                            "Property": "TypeText"
+                                        },
+                                        "Name": "CURRENT_Public.TypeText"
+                                    },
+                                    {
+                                        "Aggregation": {
+                                            "Expression": {
+                                                "Column": {
+                                                    "Expression": {
+                                                        "SourceRef": {
+                                                            "Source": "c"
+                                                        }
+                                                    },
+                                                    "Property": "N"
+                                                }
+                                            },
+                                            "Function": 0
+                                        },
+                                        "Name": "Sum(CURRENT_Public.N)"
+                                    },
+                                    {
+                                        "Column": {
+                                            "Expression": {
+                                                "SourceRef": {
+                                                    "Source": "c"
+                                                }
+                                            },
+                                            "Property": "AFF"
+                                        },
+                                        "Name": "CURRENT_Public.AFF"
+                                    }
+                                ]
+                            },
+                            "Binding": {
+                                "Primary": {
+                                    "Groupings": [
+                                        {
+                                            "Projections": [
+                                                2
+                                            ],
+                                            "Subtotal": 1
+                                        }
+                                    ]
+                                },
+                                "Secondary": {
+                                    "Groupings": [
+                                        {
+                                            "Projections": [
+                                                0,
+                                                1
+                                            ],
+                                            "Subtotal": 2
+                                        }
+                                    ]
+                                },
+                                "DataReduction": {
+                                    "DataVolume": 3,
+                                    "Primary": {
+                                        "Window": {
+                                            "Count": 100
+                                        }
+                                    },
+                                    "Secondary": {
+                                        "Top": {
+                                            "Count": 100
+                                        }
+                                    }
+                                },
+                                "Version": 1
+                            },
+                            "ExecutionMetricsKind": 1
+                        }
+                    }
+                ]
+            },
+            "CacheKey": "{\"Commands\":[{\"SemanticQueryDataShapeCommand\":{\"Query\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"CURRENT_Public\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"TypeText\"},\"Name\":\"CURRENT_Public.TypeText\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"N\"}},\"Function\":0},\"Name\":\"Sum(CURRENT_Public.N)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"AFF\"},\"Name\":\"CURRENT_Public.AFF\"}]},\"Binding\":{\"Primary\":{\"Groupings\":[{\"Projections\":[2],\"Subtotal\":1}]},\"Secondary\":{\"Groupings\":[{\"Projections\":[0,1],\"Subtotal\":2}]},\"DataReduction\":{\"DataVolume\":3,\"Primary\":{\"Window\":{\"Count\":100}},\"Secondary\":{\"Top\":{\"Count\":100}}},\"Version\":1},\"ExecutionMetricsKind\":1}}]}",
+            "QueryId": "",
+            "ApplicationContext": {
+                "DatasetId": "214428ee-d1b6-48c8-bca6-463dc529d522",
+                "Sources": [
+                    {
+                        "ReportId": "592f4eee-7b53-478c-9766-b8b47fefd984",
+                        "VisualId": "10a6588f140eb72c4962"
+                    }
+                ]
+            }
+        }
+    ],
+    "cancelQueries": [],
+    "modelId": 116560
+}
