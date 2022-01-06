@@ -1,6 +1,6 @@
 from . import api
-from ..modules.api_models import ApiResponse
-from ..utils.queries import db_leon_latest_actuals, db_leon_latest_metrics
+from ...modules.api_models import ApiResponse
+from ...utils.queries import db_leon_latest_actuals, db_leon_latest_metrics
 
 @api.route("/leon.json")
 def get_all_leon_stats():

@@ -1,6 +1,6 @@
 from . import api
-from ..modules.api_models import ApiResponse
-from ..utils.queries import db_fsu_latest_est, db_fsu_latest_testrept, db_fsu_latest_reptcases
+from ...modules.api_models import ApiResponse
+from ...utils.queries import db_fsu_latest_est, db_fsu_latest_testrept, db_fsu_latest_reptcases
 
 @api.route("/fsu.json")
 def get_all_fsu_stats():

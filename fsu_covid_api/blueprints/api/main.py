@@ -1,6 +1,6 @@
 from . import api
-from ..modules.api_models import ApiResponse
-from ..utils.queries import db_leon_latest_actuals, db_leon_latest_metrics, \
+from ...modules.api_models import ApiResponse
+from ...utils.queries import db_leon_latest_actuals, db_leon_latest_metrics, \
     db_fsu_latest_est, db_fsu_latest_testrept, db_fsu_latest_reptcases
 
 @api.route("/all.json")

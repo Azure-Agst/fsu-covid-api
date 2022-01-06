@@ -1,0 +1,125 @@
+<html>
+    <head>
+        <title>FSU Covid API - Homepage</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>FSU Covid Tracker</h1>
+        <b>Written by: <a href="https://azureagst.dev/">Andrew "Azure_Agst" Augustine</a></b>
+        <p>
+            This is the front-end for a Flask API I designed to compile local Covid-19 data from various sources.
+        </p>
+        <hr>
+
+        <!-- loading div -->
+        <div id="loading" style="display:block;">
+            <h3>Loading...</h3>
+            <img 
+                src="{{ url_for('static', filename='eclipse-loading.svg') }}"
+                alt="loading spinner"
+                height="100px" width="100px"
+            />
+        </div> <!-- end loading -->
+
+        <!-- main content div -->
+        <div id="content" style="display:none;">
+
+            <!-- fsu data -->
+            <h2>FSU Statistics</h2>
+            <div class="container">
+
+                <!-- reported cases -->
+                <div class="item">
+                    <h3><u>Reported Cases</u></h3>
+                    <p><b>New Cases:</b> <span id="fsu.new_cases">...</span></p>
+                    <p><b>Total Cases:</b> <span id="fsu.total_cases">...</span></p>
+                    <p><b>Last Updated:</b> <span id="fsu.rc_last_updated">...</span></p>
+                </div>
+
+                <!-- estimates -->
+                <div class="item">
+                    <h3><u>Estimates</u></h3>
+                    <p><b>Population:</b> <span id="fsu.population">...</span> (as of <span id="fsu.pop_year">...</span>)</p>
+                    <p><b>Positivity Rate:</b> <span id="fsu.pos_rate">...</span>%</p>
+                    <b>Students in Quarantine:</b>
+                    <ul>
+                        <li><b>Positives:</b> <span id="fsu.stu_pos">...</span></li>
+                        <li><b>Close Contacts:</b> <span id="fsu.stu_cc">...</span></li>
+                    </ul>
+                    <b>Employees in Quarantine:</b>
+                    <ul>
+                        <li><b>Positives:</b> <span id="fsu.empl_pos">...</span></li>
+                        <li><b>Close Contacts:</b> <span id="fsu.empl_cc">...</span></li>
+                    </ul>
+                    <p></p>
+                    <p><b>Last Updated:</b> <span id="fsu.est_last_updated">...</span></p>
+                </div>
+
+                <!-- testing -->
+                <div class="item">
+                    <h3><u>On-Campus Testing</u></h3>
+                    <p><b>Date Range:</b> <span id="fsu.tst_start">...</span> to <span id="fsu.tst_end">...</span></p>
+                    <p><b>Tests Administered:</b> <span id="fsu.tests_given">...</span></p>
+                    <p><b>Student Positives:</b> <span id="fsu.test_stu_pos">...</span></p>
+                    <p><b>Employee Positives:</b> <span id="fsu.test_empl_pos">...</span></p>
+                    <p><b>Positivity Rate:</b> <span id="fsu.test_pos_rate">...</span>%</p>
+                </div>
+            </div>
+
+            <!-- leon data -->
+            <h2>Leon County Statistics</h2>
+            <div class="container">
+
+                <!-- Metrics -->
+                <div class="item">
+                    <h3><u>Reported Metrics</u></h3>
+                    <p><b>Positivity Rate:</b> <span id="leon.pos_rate">...</span>%</p>
+                    <p><b>Vaccination Ratio:</b> <span id="leon.vac_ratio">...</span>% (2+ Doses)</p>
+                    <p><b>Cases Per 100k:</b> <span id="leon.cases_per_100k">...</span></p>
+                    <b>Infectivity Rate: (R&#x2080;)</b>
+                    <ul>
+                        <li><b>Current Value:</b> <span id="leon.r_naught">...</span></li>
+                        <li><b>90% Confidence Interval:</b> <span id="leon.r_naught_ci90">...</span></li>
+                    </ul>
+                    <p><b>Last Updated:</b> <span id="leon.met_last_updated">...</span></p>
+                </div>
+
+                <!-- Actuals -->
+                <div class="item">
+                    <h3><u>Actual Numbers</u></h3>
+                    <p><b>Vaccinated Count:</b> <span id="leon.vac_count">...</span> (2+ Doses)</p>
+                    <b>Confirmed Cases</b>
+                    <ul>
+                        <li><b>New Reports:</b> <span id="leon.new_cases">...</span></li>
+                        <li><b>Total:</b> <span id="leon.total_cases">...</span></li>
+                    </ul>
+                    <b>Deaths</b>
+                    <ul>
+                        <li><b>New Reports:</b> <span id="leon.new_deaths">...</span></li>
+                        <li><b>Total:</b> <span id="leon.total_deaths">...</span></li>
+                    </ul>
+                    <p><b>Last Updated:</b> <span id="leon.act_last_updated">...</span></p>
+                    <i>
+                        NOTE: Leon County only reports new case/death statistics around once a week, 
+                        so six out of seven times this data updated, both statistics will 0. For a more 
+                        accurate set of info, I recommend looking at my source: 
+                        <a href="https://covidactnow.org/us/florida-fl/county/leon_county/">CovidActNow</a>. :)
+                    </i>
+                </div>
+                
+            </div>
+
+        </div> <!-- end content -->
+
+        <!-- footer -->
+        <hr>
+        <i>FSU_Covid_API by Azure_Agst | {{ date }}</i>
+        <script>
+            covid_api_canary="{{ canary }}"
+            window.onload = function() {
+                autofill_api_data();
+            }
+        </script>
+        <script src="{{ url_for('static', filename='autofetch.js') }}"></script>
+    </body>
+</html>

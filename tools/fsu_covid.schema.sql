@@ -27,13 +27,6 @@ CREATE TABLE IF NOT EXISTS "users.data" (
 	"ratelimit"	INTEGER,
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
-CREATE TABLE IF NOT EXISTS "users.logs" (
-	"id"	INTEGER NOT NULL UNIQUE,
-	"timestamp"	INTEGER,
-	"user_id"	INTEGER,
-	"query"	TEXT,
-	PRIMARY KEY("id" AUTOINCREMENT)
-);
 CREATE TABLE IF NOT EXISTS "annotations" (
 	"id"	INTEGER NOT NULL UNIQUE,
 	"src_table"	TEXT,
@@ -80,6 +73,22 @@ CREATE TABLE IF NOT EXISTS "leon.actuals" (
 	"new_cases"	INTEGER,
 	"new_deaths"	INTEGER,
 	"vac_count"	INTEGER,
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "users.canaries" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"timestamp"	INTEGER,
+	"ip"	TEXT,
+	"canary"	TEXT,
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "users.logs" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"timestamp"	INTEGER,
+	"user_id"	INTEGER,
+	"canary"	INTEGER,
+	"ip"	INTEGER,
+	"query"	TEXT,
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
 COMMIT;
