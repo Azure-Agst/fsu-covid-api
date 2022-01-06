@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 import time
 import json
 import sqlite3
@@ -9,8 +10,14 @@ from typing import Union
 from bs4 import BeautifulSoup
 from datetime import date, datetime
 
-COMMIT = False
 CAN_APIKEY = "6af9022cc6464aeb9aec9fd499179327"
+
+if sys.argv[-1].lower() == "true":
+    COMMIT = True
+elif sys.argv[-1].lower() == "false":
+    COMMIT = False
+else:
+    raise Exception("no arg, please true/false")
 
 class FsuApiException(Exception):
     pass
